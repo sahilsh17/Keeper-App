@@ -1,12 +1,19 @@
-import react, {useState} from 'react';
+import react, {useState,useEffect} from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Note from './Note';
-import {notes} from '../notes.js';
 import CreateArea from './CreateArea';
+import axios from 'axios';
 
 export default function App() {
   const [notes, setNotes] = useState([]);
+  useEffect(()=> {
+    axios
+      .get('http://localhost:8000/api/notes')
+      .then(res => {
+          setNotes(res.data.notes);
+      });
+  },[])
   function DeleteNote(id) {
     setNotes(prevNotes => {
       return prevNotes.filter((note,index)=>{
