@@ -14,6 +14,9 @@ export default function App() {
           setNotes(res.data.notes);
       });
   },[])
+  function addNote(note) {
+    setNotes([...notes, note]);
+  }
   function DeleteNote(id) {
     setNotes(prevNotes => {
       return prevNotes.filter((note,index)=>{
@@ -26,7 +29,7 @@ export default function App() {
   return(
     <div>
      <Header />
-      <CreateArea notes={notes} setNotes={setNotes}/>
+      <CreateArea onAdd={addNote} notes={notes} setNotes={setNotes}/>
         {
         notes.map((note,i) => {
           return( <Note onDelete={DeleteNote} key={i} id={i} title={note.title} content={note.content} />)
