@@ -10,10 +10,8 @@ function CreateArea(props) {
   }
   function handleClick(e) {
    e.preventDefault();
-   
-    let temp = [...props.notes];
-    props.setNotes([...temp,note]);
-    setNote({...note,title: "", content: ""});
+   props.onAdd(note)
+   setNote({...note,title: "", content: ""});
   }
   return (
     <div>
