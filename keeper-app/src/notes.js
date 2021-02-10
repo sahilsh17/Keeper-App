@@ -22,6 +22,11 @@ const notes = [
     title: "Hardware vs. Software",
     content:
       "What's the difference between hardware and software? You can hit your hardware with a hammer, but you can only curse at your software."
+  },
+  {
+    key: 5,
+    title: "Using React components",
+    content: "How to use React components? and using map function to render multiple components with props",
   }
 ];
 module.exports ={notes};
