@@ -28,5 +28,17 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
     })
+    router.post("/:id", (req, res) => {
+      const id = req.params.id;
+      db.query(`Delete from notes where id = ${id};`)
+      .then(data => {
+        res.status(200).json({result: true})
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+    })
   return router;
 };
