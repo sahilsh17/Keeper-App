@@ -15,6 +15,11 @@ export default function App() {
       });
   },[])
   function addNote(note) {
+    axios
+    .post('http://localhost:8000/api/notes',note)
+    .then(res => {
+      console.log(res);
+    })
     setNotes([...notes, note]);
   }
   function DeleteNote(id) {
