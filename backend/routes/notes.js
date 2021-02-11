@@ -15,6 +15,18 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-  
+    router.post("/",(req,res) => {
+      const values = [req.body.title, req.body.content];
+      const query = `Insert into notes(title, content) values($1,$2);`
+      db.query(query, values)
+      .then(data => {
+        res.status(200).json({result: true})
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+    })
   return router;
 };
