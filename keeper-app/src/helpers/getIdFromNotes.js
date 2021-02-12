@@ -5,7 +5,6 @@ export function getIdFromNotes(notes,id)  {
     .get('http://localhost:8000/api/notes')
     .then(res => {
       const noteArray = res.data.notes;
-      console.log(noteArray);
       const note = noteArray.filter(note => note.title === notes[id].title && note.content === notes[id].content);     
       return note[0].id;
     })
