@@ -1,56 +1,24 @@
-import react, {useState,useEffect} from 'react';
-import Header from './Header';
-import Footer from './Footer';
-import Note from './Note';
-import CreateArea from './CreateArea';
-import axios from 'axios';
-const {getIdFromNotes} = require('../helpers/getIdFromNotes');
+import react, { useState } from 'react';
+import Notes from './Notes';
+import Login from './login';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 export default function App() {
-  const [notes, setNotes] = useState([]);
-  useEffect(()=> {
-    axios
-      .get('http://localhost:8000/api/notes')
-      .then(res => {
-          setNotes(res.data.notes);
-      });
-  },[]   )
-  function addNote(note) {
-    axios
-    .post('http://localhost:8000/api/notes',note)
-    .then(res => {
-      setNotes([...notes, note]);
-    })
-    
+  const [token, setToken] = useState();
+
+  if (!token) {
+    return <Login setToken={setToken} />
   }
-  function DeleteNote(id) {
-    getIdFromNotes(notes,id)
-    .then(index => {
-      axios
-      .post(`http://localhost:8000/api/notes/${index}`)
-      .then(res => {
-        setNotes(prevNotes => {
-          return prevNotes.filter((note,index)=>{
-            return index !== id;
-        })
-       
-        })
-      })
-    })
-   
-   
-   
-  }
-  return(
-    <div>
-     <Header />
-      <CreateArea onAdd={addNote} notes={notes} setNotes={setNotes}/>
-        {
-        notes.map((note,i) => {
-          return( <Note onDelete={DeleteNote} key={i} id={i} dbId={note.id} title={note.title} content={note.content} />)
-        })
-        }
-      <Footer />
+  return (
+    <div className="wrapper">
+    <h1>Application</h1>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/Notes">
+          <Notes />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   </div>
   )
-  
+
 }
