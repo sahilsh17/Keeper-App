@@ -22,18 +22,21 @@ export default function App() {
     })
     
   }
-  function DeleteNote(id,dbId) {
-    console.log(getIdFromNotes(notes,id));
-    axios
-    .post(`http://localhost:8000/api/notes/${dbId}`)
-    .then(res => {
-      setNotes(prevNotes => {
-        return prevNotes.filter((note,index)=>{
-          return index !== id;
-      })
-     
+  function DeleteNote(id) {
+    getIdFromNotes(notes,id)
+    .then(index => {
+      axios
+      .post(`http://localhost:8000/api/notes/${index}`)
+      .then(res => {
+        setNotes(prevNotes => {
+          return prevNotes.filter((note,index)=>{
+            return index !== id;
+        })
+       
+        })
       })
     })
+   
    
    
   }
