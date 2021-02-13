@@ -10,14 +10,7 @@ export default function App() {
   }
   return (
     <div className="wrapper">
-    <h1>Application</h1>
-    <BrowserRouter>
-      <Switch>
-        <Route path="/Notes">
-          <Notes />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+   <Notes />
   </div>
   )
 
