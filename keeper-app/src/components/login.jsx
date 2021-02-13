@@ -3,12 +3,18 @@ import './login.css';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
+
 async function loginUser(credentials) {
-  axios.post('https://localhost:8000/login',credentials)
-  .then(res => {
-    console.log(res);
+  return fetch('http://localhost:8000/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(credentials)
   })
-}
+    .then(data => data.json())
+ }
+ 
 export default function Login({ setToken }) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
@@ -24,7 +30,7 @@ export default function Login({ setToken }) {
   return(
     <div className="login-wrapper">
       <h1>Please Log In</h1>
-    <form>
+    <form onSubmit ={handleSubmit}> 
       <label>
         <p>Username</p>
         <input type="text" onChange = {e => setUsername(e.target.value)}/>
@@ -34,7 +40,7 @@ export default function Login({ setToken }) {
         <input type="password" onChange = {e => setPassword(e.target.value)} />
       </label>
       <div>
-        <button type="submit" onSubmit ={handleSubmit}>Submit</button>
+        <button type="submit">Submit</button>
       </div>
     </form>
     </div>
