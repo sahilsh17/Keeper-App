@@ -21,17 +21,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 app.use(cors());
-
+app.use('/login', (req, res) => {
+  res.send({
+    token: 'test123'
+  });
+});
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const noteRoutes = require("./routes/notes");
-const loginRoutes = require("./routes/login");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
  app.use("/api/notes", noteRoutes(db));
- app.use("/api/login", loginRoutes(db));
-
+ 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 }); 
