@@ -1,8 +1,6 @@
 import React,{useState} from 'react';
 import './login.css';
 import PropTypes from 'prop-types';
-import axios from 'axios';
-
 
 async function loginUser(credentials) {
   return fetch('http://localhost:8000/login', {
@@ -28,7 +26,7 @@ export default function Login({ setToken }) {
     setToken(token);
   }
   return(
-    <div className="login-wrapper">
+    <div className="form-style-5">
       <h1>Please Log In</h1>
     <form onSubmit ={handleSubmit}> 
       <label>
@@ -40,7 +38,7 @@ export default function Login({ setToken }) {
         <input type="password" onChange = {e => setPassword(e.target.value)} />
       </label>
       <div>
-        <button type="submit">Submit</button>
+        <button className="btn-submit" type="submit">Submit</button>
       </div>
     </form>
     </div>

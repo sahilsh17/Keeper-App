@@ -1,5 +1,34 @@
-.login-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.form-style-5{
+	max-width: 500px;
+	padding: 10px 20px;
+	background: #ffe391;
+	margin: 100px auto;
+	padding: 20px;
+	background: #ffe391;
+	border-radius: 8px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+.form-style-5 fieldset{
+	border: none;
+}
+.form-style-5 legend {
+	font-size: 1.4em;
+	margin-bottom: 10px;
+}
+.form-style-5 label {
+	display: block;
+	margin-bottom: 8px;
+}
+.btn-submit{
+  position: relative;
+	display: block;
+	padding: 19px 39px 18px 39px;
+	color: #FFF;
+	margin: 0 auto;
+	background: #f5ba13;
+	font-size: 18px;
+	text-align: center;
+	font-style: normal;
+	width: 50%;
+	margin-bottom: 10px;
 }
