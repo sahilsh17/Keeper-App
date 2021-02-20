@@ -1,8 +1,9 @@
 import react, { useState } from 'react';
 import Notes from './Notes';
 import Login from './login';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import useToken from '../hooks/useToken'
+import Sidebar from './Sidebar';
 
 
 export default function App() {
@@ -14,8 +15,12 @@ export default function App() {
   }
   return (
     <div className="wrapper">
-   <Notes />
-  </div>
+    
+    <Router>
+    <Sidebar />
+    </Router>
+    <Notes />
+    </div>
   )
 
 }
